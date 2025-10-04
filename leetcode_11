@@ -1,0 +1,24 @@
+
+
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        //Two pointer approach
+        int area = 0;
+        int right = height.size() - 1 , left = 0 ;
+        while(left < right){
+            //claculate area of containers and store the max area
+
+            int breadth = right - left;
+            int length = min(height[right],height[left]);
+            area = max(area,length*breadth);
+
+            //Reduce width width of the container based on the height
+            if(height[right] < height[left])
+                right--;
+            else
+                left++;
+        }
+        return area;
+    }
+};
